@@ -74,6 +74,8 @@ class _LOBMixin(object):
                 return value
             elif compat.py2k and isinstance(value, buffer):
                 return value
+            elif isinstance(value, memoryview):
+                return value.tobytes()
             elif value is not None:
                 return value.read()
             else:
